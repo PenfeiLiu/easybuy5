@@ -22,7 +22,7 @@ public class EbNewsController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
         String judge = request.getParameter("judge");
-        String str = null;
+
 
 
         if("list".equals(judge)){
