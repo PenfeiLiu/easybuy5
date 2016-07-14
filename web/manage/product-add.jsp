@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>后台管理 - 易买网</title>
-<link type="text/css" rel="stylesheet" href="../css/style.css" />
-<script type="text/javascript" src="../scripts/function-manage.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>后台管理 - 易买网</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+	<script type="text/javascript" src="../scripts/function-manage.js"></script>
 </head>
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="../images/logo.gif" /></div>
-	<div class="help"><a href="../index.jsp">返回前台页面</a></div>
+	<div class="help"><a href="../index.html">返回前台页面</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
 			<li><a href="index.jsp">首页</a></li>
@@ -35,7 +35,7 @@
 		<div class="box">
 			<dl>
 				<dt>用户管理</dt>
-				<dd><em><a href="user-add.jsp">新增</a></em><a href="user.jsp">用户管理</a></dd>
+				<dd><em><a href="/manage/user-add.jsp">新增</a></em><a href="manageUser?action=showUsers">用户管理</a></dd>
 				<dt>商品信息</dt>
 				<dd><em><a href="productClass-add.jsp">新增</a></em><a href="productClass.jsp">分类管理</a></dd>
 				<dd><em><a href="product-add.jsp">新增</a></em><a href="product.jsp">商品管理</a></dd>
@@ -51,24 +51,30 @@
 	<div class="main">
 		<h2>添加商品</h2>
 		<div class="manage">
-			<form action="manage-result.jsp">
+			<form action="/manageProduct?action=insert&productScan=0" method="post" enctype="multipart/form-data">
 				<table class="form">
 					<tr>
+						<td class="field">商品编号：</td>
+						<td><input type="text" class="text" name="productId"  /></td>
+					</tr>
+					<tr>
 						<td class="field">商品名称：</td>
-						<td><input type="text" class="text" name="productName" value="铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机" /></td>
+						<td><input type="text" class="text" name="productName" /></td>
 					</tr>
 					<tr>
 						<td class="field">所属分类：</td>
 						<td>
-							<select name="parentId">
-								<option value="1">电器</option>
-								<option value="3">├ 电器</option>
-								<option value="3">└ 电器</option>
-								<option value="2">衣服</option>
-								<option value="3">├ 电器</option>
-								<option value="3">└ 电器</option>
+							<select id="parentId" name="epcId">
+								<option value="1" onclick="change()">图书音乐</option>
+								<option value="2" onclick="change1()">百货</option>
+							</select>
+							<select id="chileId" name="epcChildId">
 							</select>
 						</td>
+					</tr>
+					<tr>
+						<td class="field">商品描述：</td>
+						<td><textarea  class="text" name="epDescription" ></textarea></td>
 					</tr>
 					<tr>
 						<td class="field">商品图片：</td>
@@ -79,16 +85,20 @@
 						<td><input type="text" class="text tiny" name="productPrice" /> 元</td>
 					</tr>
 					<tr>
-						<td class="field">品牌：</td>
-						<td><input type="text" class="text" name="productName" /></td>
-					</tr>
-					<tr>
 						<td class="field">库存：</td>
-						<td><input type="text" class="text tiny" name="productName" /></td>
+						<td><input type="text" class="text tiny" name="productStock"  /></td>
 					</tr>
 					<tr>
-						<td class="field">条码号：</td>
-						<td><input type="text" class="text" name="productName" /></td>
+						<td class="field">是否特价：</td>
+						<td>
+							<input type="radio" name="discount" value="1" checked>是
+							<input type="radio" name="discount" value="0" >否
+						</td>
+					</tr>
+
+					<tr>
+						<td class="field">  点击量：</td>
+						<td >0</td>
 					</tr>
 					<tr>
 						<td></td>

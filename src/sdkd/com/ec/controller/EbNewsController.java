@@ -1,7 +1,9 @@
 package sdkd.com.ec.controller;
 
 import sdkd.com.ec.dao.impl.EbNewsDao;
+import sdkd.com.ec.dao.impl.EbNoticeDao;
 import sdkd.com.ec.model.EbNews;
+import sdkd.com.ec.model.EbNotice;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +17,7 @@ import java.util.List;
  */
 public class EbNewsController extends HttpServlet {
           EbNewsDao newsDao = new EbNewsDao();
+          EbNoticeDao noticeDao = new EbNoticeDao();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -24,12 +27,11 @@ public class EbNewsController extends HttpServlet {
         String judge = request.getParameter("judge");
 
 
-
         if("list".equals(judge)){
-            List(request,response);
-        }else if("single".equals(judge)){
-            int id = Integer.parseInt(request.getParameter("id"));
-            singleNew(request,response,id);
+
+        }else if("detail".equals(judge)){
+
+            singleNew(request,response);
         }else{
             List(request,response);
         }
@@ -39,11 +41,31 @@ public class EbNewsController extends HttpServlet {
     }
     public void List(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<EbNews> list = newsDao.getNews();
+        List<EbNotice> list1 = noticeDao.getNotice();
         request.setAttribute("newList",list);
+        request.setAttribute("noticeList",list1);
         request.getRequestDispatcher("/action1").forward(request,response);
     }
-    public void singleNew(HttpServletRequest request, HttpServletResponse response,int id) throws ServletException, IOException {
+    public void singleNew(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String paramsId = request.getParameter("id");
+        String parameter = request.getParameter("temp");
+        int id = 0;
+        int temp = 0;
+        if(paramsId!=null && !"".equals(paramsId)){
+            id = Integer.valueOf(paramsId);
+        }
+        if(parameter!=null && !"".equals(parameter)){
+            temp = Integer.valueOf(parameter);
+        }
         EbNews ebNews = newsDao.getNewsById(id);
-        request.getRequestDispatcher("/news-view.jsp").forward(request,response);
+        EbNotice ebNotice = noticeDao.getNoticeById(id);
+        request.setAttribute("news",ebNews);
+        request.setAttribute("notices",ebNotice);
+        if(temp!=0){
+            request.getRequestDispatcher("/notice-view.jsp").forward(request,response);
+        }else{
+            request.getRequestDispatcher("/news-view.jsp").forward(request,response);
+        }
+
     }
 }

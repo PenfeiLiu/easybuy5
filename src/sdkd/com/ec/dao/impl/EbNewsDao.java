@@ -31,7 +31,7 @@ public class EbNewsDao extends BaseDao {
     }
     public EbNews getNewsById(int id){  //获得单个新闻
         EbNews news = new EbNews();
-        String sql = "select * from easybuy_news where id = ?";
+        String sql = "select * from easybuy_news where en_id = ?";
         List<String> paramList = new ArrayList<String>() ;
            paramList.add(id+"");
         try {
@@ -40,6 +40,7 @@ public class EbNewsDao extends BaseDao {
 
                 news.setEnId(rs.getInt("en_id"));
                 news.setEnTitle(rs.getString("en_title"));
+                news.setEnContent(rs.getString("en_content"));
                 //添加到集合中
 
             }

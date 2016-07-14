@@ -10,8 +10,26 @@ public class EbProduct {
     private double ep_price;
     private Integer ep_stock;
     private Integer epc_id;
+    private Integer ep_views;
     private Integer epc_child_id;
     private String ep_file_name;
+    private int ep_discount;
+    public int getEp_discount() {
+        return ep_discount;
+    }
+
+    public void setEp_discount(int ep_discount) {
+        this.ep_discount = ep_discount;
+    }
+
+
+    public Integer getEp_views() {
+        return ep_views;
+    }
+
+    public void setEp_views(Integer ep_views) {
+        this.ep_views = ep_views;
+    }
 
     public Integer getEp_id() {
         return ep_id;

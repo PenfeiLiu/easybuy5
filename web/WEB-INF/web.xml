@@ -39,6 +39,22 @@
         <servlet-name>easy3</servlet-name>
         <url-pattern>/action3</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>easy4</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.EbProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>easy4</servlet-name>
+        <url-pattern>/action4</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>manageProduct</servlet-name>
+        <servlet-class>sdkd.com.ec.controller.EbMaProductController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>manageProduct</servlet-name>
+        <url-pattern>/manageProduct</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>action</welcome-file>
     </welcome-file-list>

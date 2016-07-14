@@ -11,10 +11,10 @@
 <body>
 <div id="header" class="wrap">
 	<div id="logo"><img src="images/logo.gif" /></div>
-	<div class="help"><a href="#" class="shopping">购物车</a><a href="login.jsp">登录</a><a href="register.jsp">注册</a><a href="guestbook.jsp">留言</a></div>
+	<div class="help"><a href="#" class="shopping">购物车</a><a href="login.jsp">登录</a><a href="register.jsp">注册</a><a href="guestbook.jsp">留言</a><a href="/manage/index.jsp">后台管理</a></div>
 	<div class="navbar">
 		<ul class="clearfix">
-			<li class="current"><a href="#">首页</a></li>
+			<li class="current"><a href="/action">首页</a></li>
 			<li><a href="#">图书</a></li>
 			<li><a href="#">百货</a></li>
 			<li><a href="#">品牌</a></li>
@@ -55,7 +55,7 @@
 				</c:if>
 					<c:forEach var="pdirectory" items="${directoryList}">
 					<c:if test="${directory.epcId==pdirectory.epcParentId}"	>
-						<dd><a href="product-list.jsp">${pdirectory.epcName}</a></dd>
+						<dd><a href="/action4?action=list">${pdirectory.epcName}</a></dd>
 					</c:if>
 					</c:forEach>
 				</c:forEach>
@@ -96,21 +96,17 @@
 			<div class="news-list">
 				<h4>最新公告</h4>
 				<ul>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
-					<li><a href="news-view.jsp" target="_blank">抢钱啦</a></li>
+					<c:forEach var="noticeslist" varStatus="status" items="${noticeList}">
+						<li><a href="action?id=${noticeslist.ec_id}&judge=detail&temp=2" target="_blank">${noticeslist.ec_entitle}</a></li>
+					</c:forEach>
 				</ul>
 			</div>
 			<div class="spacer"></div>
 			<div class="news-list">
 				<h4>新闻动态</h4>
 				<ul>
-					<c:forEach var="news" varStatus="status" items="${newList}">
-					<li><a href="news-view=${news.enId}.jsp" target="_blank">${news.enTitle}</a></li>
+					<c:forEach var="newslist" varStatus="status" items="${newList}">
+					<li><a href="action?id=${newslist.enId}&judge=detail" target="_blank">${newslist.enTitle}</a></li>
 				</c:forEach>
 				</ul>
 			</div>
