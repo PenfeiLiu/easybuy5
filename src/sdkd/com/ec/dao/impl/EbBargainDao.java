@@ -14,7 +14,7 @@ import java.util.List;
 public class EbBargainDao extends BaseDao{
       public List<EbProduct> getProduct(){
             List<EbProduct> productsList = new ArrayList<EbProduct>();
-            String sql = " select * from easybuy_product order by ep_id desc limit 1,8";
+            String sql = " select * from easybuy_product where ep_discount = 1 limit 8";
             ResultSet rs = this.executeSearch(sql,null);
             try {
                   while (rs.next())
