@@ -34,6 +34,8 @@ public class EbProductController extends HttpServlet {
                 list(request, response);
             }else if("detail".equals(action)){
                 detail(request, response);
+            }else if("mgrAdd".equals(action)){
+                upload(request,response);
             }
         }
 

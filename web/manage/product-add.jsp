@@ -51,7 +51,7 @@
 	<div class="main">
 		<h2>添加商品</h2>
 		<div class="manage">
-			<form action="/manageProduct?action=insert&productScan=0" method="post" enctype="multipart/form-data">
+			<form action="/action4?action=mgrAdd&productScan=0" method="post" enctype="multipart/form-data">
 				<table class="form">
 					<tr>
 						<td class="field">商品编号：</td>

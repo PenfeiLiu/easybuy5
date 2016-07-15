@@ -1,6 +1,7 @@
 package sdkd.com.ec.controller;
 
 import sdkd.com.ec.dao.impl.EbBargainDao;
+import sdkd.com.ec.dao.impl.EbHotSaleDao;
 import sdkd.com.ec.model.EbProduct;
 
 import javax.servlet.ServletException;
@@ -23,9 +24,9 @@ public class  EbHotSaleController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        EbBargainDao ebBargainDao = new EbBargainDao();
 
-        List<EbProduct> hotProductList = ebBargainDao.getProduct();
+        EbHotSaleDao ebHotSaleDao = new EbHotSaleDao();
+        List<EbProduct> hotProductList = ebHotSaleDao.getProduct();
 
         req.setAttribute("hotProductList",hotProductList);
 

@@ -82,7 +82,7 @@
 				<li>
 					<dl>
 
-						<dt><a href="product-view.jsp" target="_blank"><img src="images/product/1.jpg" /></a></dt>
+						<dt><a href="product-view.jsp" target="_blank"><img height="100px"width="100px" src="${productList.ep_file_name}" /></a></dt>
 						<dd class="title"><a href="product-view.jsp" target="_blank">${productList.ep_name}</a></dd>
 						<dd class="price">${productList.ep_price}</dd>
 
@@ -119,7 +119,7 @@
 					<li>
 						<dl>
 
-							<dt><a href="product-view.jsp" target="_blank"><img src="images/product/1.jpg" /></a></dt>
+							<dt><a href="product-view.jsp" target="_blank"><img height="100px"width="100px" src="${hotProductList.ep_file_name}" /></a></dt>
 							<dd class="title"><a href="product-view.jsp" target="_blank">${hotProductList.ep_name}</a></dd>
 							<dd class="price">${hotProductList.ep_price}</dd>
 
